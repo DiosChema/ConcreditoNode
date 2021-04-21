@@ -1,0 +1,12 @@
+{
+  "prospectos": 
+  {
+    "nameDB": "Prospectos",
+    "nameTableProspectos" : "Prospectos",
+    "secuencias" : 
+    {
+      "nameTableSecuencias" : "Secuencias",
+      "nameSecuenciaProspectos" : "Prospectos"
+    }
+  }
+}
