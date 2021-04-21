@@ -18,14 +18,14 @@ async function darAltaProspecto(dbo,query){
   var datosProspecto = 
   {
     _id: query.consecutivo,
-    Nombre: query.nombre,
-    ApellidoP: query.apellidoP,
-    ApellidoM: query.apellidoM,
-    Calle: query.calle,
-    Numero: parseInt(query.numero),
-    Colonia: query.colonia,
-    CodigoPostal: parseInt(query.codigoPostal),
-    Telefono: parseInt(query.telefono),
+    Nombre: query.Nombre,
+    ApellidoP: query.ApellidoP,
+    ApellidoM: query.ApellidoM,
+    Calle: query.Calle,
+    Numero: parseInt(query.Numero),
+    Colonia: query.Colonia,
+    CodigoPostal: parseInt(query.CodigoPostal),
+    Telefono: parseInt(query.Telefono),
     RFC: query.RFC,
     Estatus: 0,
     ObservacionRechazo: ""
