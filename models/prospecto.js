@@ -32,7 +32,9 @@ async function darAltaProspecto(dbo,query){
     Documentos: []
   }
 
-  await dbo.collection(dbTable).insertOne(datosProspecto)
+  let respuesta = await dbo.collection(dbTable).insertOne(datosProspecto)
+
+  return await respuesta.ops[0]
 
 }
 
