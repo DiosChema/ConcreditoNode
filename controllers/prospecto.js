@@ -139,39 +139,9 @@ async function obtenerProspectos()
 
 }
 
-async function guardarDocumento(documento, query)
-{
-  var mongoClient = require('mongodb').MongoClient;
-  let conexionModel = require('../models/conexion.js')
-  let prospectoModel = require('../models/prospecto.js')
-  let manejarRespuesta = require('../models/error.js')
-
-  let client
-
-  try
-  {
-    client = await conexionModel.crearConexion(mongoClient);
-    let dboProspectos = await conexionModel.conexionProspectos(client)
-
-    if(!dboProspectos)
-    {
-      return await manejarRespuesta.manejarRespuesta(2)
-    }
-
-    return await prospectoModel.guardarDocumento(dbo, documento, query)
-  }
-  catch(e){
-    console.error(e);
-  }
-  finally{
-    await client.close();
-  }
-}
-
 module.exports = {
   obtenerProspecto: obtenerProspecto,
   darAltaProspecto: darAltaProspecto,
   actualizarProspecto: actualizarProspecto,
-  obtenerProspectos: obtenerProspectos,
-  guardarDocumento: guardarDocumento
+  obtenerProspectos: obtenerProspectos
 }

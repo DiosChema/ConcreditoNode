@@ -15,6 +15,8 @@ async function darAltaProspecto(dbo,query){
 
   const dbTable = require("../db.json").prospectos.nameTableProspectos;
 
+  var documentos
+
   var datosProspecto = 
   {
     _id: query.consecutivo,
@@ -29,7 +31,7 @@ async function darAltaProspecto(dbo,query){
     RFC: query.RFC,
     Estatus: 0,
     ObservacionRechazo: "",
-    Documentos: []
+    Documentos: query.DocumentoObj
   }
 
   let respuesta = await dbo.collection(dbTable).insertOne(datosProspecto)
@@ -82,45 +84,9 @@ async function obtenerProspectos(dbo){
 
 }
 
-async function guardarDocumento(dbo,documento, query)
-{
-  const dbTableDocumentos = require("../db.json").prospectos.Documentos;
-  const dbTableProspectos = require("../db.json").prospectos.nameTableProspectos;
-  var filesrc = './public/files/'+ documento.originalname;
-
-  var datosDocumento = 
-  {
-    _id: documento.originalname,
-    ruta: filesrc
-  }
-
-  await dbo.collection(dbTableDocumentos).insertOne(datosDocumento)
-
-  var prospecto = 
-  {
-    _id: parseInt(query.id)
-  }
-
-  var datosProspecto = 
-  {
-    $push: 
-    {
-      Documentos : 
-      {
-        id: documento.originalname,
-        nombre: query.originalname
-      }      
-    }
-  }
-
-  await dbo.collection(dbTable).findOneAndUpdate(prospecto, datosProspecto)
-
-}
-
 module.exports = {
   obtenerProspecto: obtenerProspecto,
   darAltaProspecto: darAltaProspecto,
   actualizarProspecto: actualizarProspecto,
-  obtenerProspectos: obtenerProspectos,
-  guardarDocumento: guardarDocumento
+  obtenerProspectos: obtenerProspectos
 }

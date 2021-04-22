@@ -38,9 +38,4 @@ router.get('/prospectos', async (req, res) => {
   await res.send(resultado);
 })
 
-router.post("/subirDocumento", uploadDisk.single("file"), (req, res) => {
-  res.send("success");
-  prospectosController.guardarDocumento(req.file, req.body);
-});
-
 module.exports = router;
