@@ -76,7 +76,8 @@ async function obtenerProspectos(dbo){
       CodigoPostal : 0,
       Telefono : 0,
       RFC : 0,
-      ObservacionRechazo : 0
+      ObservacionRechazo : 0,
+      Documentos : 0
     }
   }
 
